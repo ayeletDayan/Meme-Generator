@@ -27,8 +27,8 @@ function draw(event) {
 
 function setText() {
   
-  // const elGetText = document.querySelector('textarea.text');
-  const elGetText = document.querySelector('input.text');
+  const elGetText = document.querySelector('textarea.text');
+  // const elGetText = document.querySelector('input.text');
   const text = elGetText.value;
   var c = document.getElementById("my-canvas");
   var ctx = c.getContext("2d");

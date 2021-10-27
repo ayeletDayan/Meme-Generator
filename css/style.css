@@ -18,6 +18,22 @@ button {
     font-weight: bold;
 }
 
+.textarea1 {
+    display: flex;
+    font-family: cursive;
+    height: 25px;
+    position: fixed;
+    left: 30%;
+    top: 30%;
+}
+.textarea2 {
+    font-family: cursive;
+    height: 25px;
+    position: fixed;
+    left: 30%;
+    bottom: 15%;
+}
+
 .gallery {
     position: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
