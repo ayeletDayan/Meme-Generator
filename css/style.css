@@ -34,8 +34,6 @@ img {
 }
 
 .my-img{
-    height: 400px;
-    width: 400px;
     border-radius: 50px;
     position: absolute;
     grid-area: 1/1/1/1;
@@ -45,8 +43,8 @@ img {
 canvas {
     background-color: antiquewhite;
     margin: auto;
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
 }
 
 .canvas-btns-container {
