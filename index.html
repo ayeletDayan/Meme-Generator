@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>mister-canvas</title>
+</head>
+
+<body onload="init()">
+    <h1>Meme Generator</h1>
+    <div class="gallery"></div>
+    <div class="canvas-btns-container">
+        <button onclick="toggleClrInput()" class="set-color-btn">Color</button>
+        <input type="color" class="clr-input" hidden onchange="setColor(this.value)">
+        <input class="text" data-trans="text" placeholder="Text"/>
+        <button onclick="setText()">Add text</button>
+        <button onclick="up()">↑</button>
+        <button onclick="down()">↓</button>
+        <button onclick="addText()">+</button>        
+        <button onclick="clearCanvas()">Clear</button>
+        <button onclick="textBig()">A+</button>
+        <button onclick="textSmall()">A-</button>
+        <button onclick="textLeft()">left</button>
+        <button onclick="textCenter()">center</button>
+        <button onclick="textRight()">right</button>
+        <button onclick="setImoji()">imoji</button>
+        <button><a href="#" onclick="downloadCanvas(this)" download="myphoto">Download</a></button>
+        <br><br>
+        <div class="canvas-container">
+            <canvas id="my-canvas" height="400" width="400" class="my-canvas"
+            onclick="draw(event)"></canvas>            
+            <!-- onmousedown="mouseDown(event)"
+                onmouseup="mouseUp(event)" onmousemove="draw(event)" ontouchstart="mouseDown(event)"
+                ontouchend="mouseUp(event)" ontouchmove="draw(event)"> -->
+        </div>
+    </div>
+    <footer>© Ayelet</footer>
+    <script src="js/service.js"></script>
+    <script src="js/container.js"></script>
+</body>
+
+</html>
