@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>mister-canvas</title>
 </head>
 
@@ -16,17 +17,18 @@
         <button onclick="toggleClrInput()" class="set-color-btn">Color</button>
         <input type="color" class="clr-input" hidden onchange="setColor(this.value)">
         <input class="text" data-trans="text" placeholder="Text"/>
+        <!-- <textarea class="textarea" style="border: hidden; font-family: Ariel; font-size: large;" placeholder="Text"></textarea> -->
         <button onclick="setText()">Add text</button>
         <button onclick="up()">↑</button>
         <button onclick="down()">↓</button>
         <button onclick="addText()">+</button>        
-        <button onclick="clearCanvas()">Clear</button>
+        <button onclick="clearCanvas()"><i style="font-size:12px" class="fa">&#xf1f8;</i></button>
         <button onclick="textBig()">A+</button>
         <button onclick="textSmall()">A-</button>
-        <button onclick="textLeft()">left</button>
-        <button onclick="textCenter()">center</button>
-        <button onclick="textRight()">right</button>
-        <button onclick="setImoji()">imoji</button>
+        <button onclick="textLeft()"><i style="font-size:12px" class="fa">&#xf036;</i></button>
+        <button onclick="textCenter()"><i style="font-size:12px" class="fa">&#xf037;</i></button>
+        <button onclick="textRight()"><i style="font-size:12px" class="fa">&#xf038;</i></button>
+        <button onclick="setEmoji()">&#128151</button>
         <button><a href="#" onclick="downloadCanvas(this)" download="myphoto">Download</a></button>
         <br><br>
         <div class="canvas-container">

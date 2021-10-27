@@ -6,8 +6,9 @@ var gColor = '#FAEBD7';
 // var gIsDraw = false;
 var gSize = 20;
 var gText;
-var gX=50;
-var gY=50;
+var gX = 50;
+var gY = 50;
+const EMOJI = '&#128151';
 
 function toggleClrInput() {
   document.querySelector('.clr-input').hidden = !document.querySelector('.clr-input').hidden
@@ -25,11 +26,13 @@ function draw(event) {
 }
 
 function setText() {
+  
+  // const elGetText = document.querySelector('textarea.text');
   const elGetText = document.querySelector('input.text');
   const text = elGetText.value;
   var c = document.getElementById("my-canvas");
   var ctx = c.getContext("2d");
-  gCtx.font = "50px cursive";
+  gCtx.font = `20+${gSize}px cursive`;
   gCtx.fillStyle = gColor;
   gCtx.fillText(text, gX, gY);
   gCtx.strokeText(text, gX, gY);
@@ -48,12 +51,12 @@ function addText() { //todo
 
 }
 
-function textBig() { //todo
-
+function textBig() {
+  gSize += 5;
 }
 
-function textSmall() { //todo
-
+function textSmall() {
+  if (gSize > 5) gSize -= 5;
 }
 
 function textLeft() { //todo
@@ -68,8 +71,8 @@ function textRight() { //todo
 
 }
 
-function setImoji() { //todo
-
+function setEmoji() { //todo
+  gCtx.fillText(EMOJI, gX, gY);
 }
 
 function clearCanvas() {
