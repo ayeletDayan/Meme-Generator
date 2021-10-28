@@ -8,13 +8,16 @@ var gText;
 var gX = 50;
 var gY = 50;
 var gTexts = [];
-var gUp = false;
-var gDowm = false;
+var gUp = 0;
+var gDown = 0;
+var gLeft = 0;
+var gRight = 0;
+var gPos;
 
 const EMOJI = '💖';  //'&#128151'
 
 function setSort(sortBy) {
-  gCurrGallery = (sortBy === 'dogs')? createGallery('dogs') : (sortBy === 'mix')? createGallery('mix') : createGallery('cats');    
+  gCurrGallery = (sortBy === 'dogs') ? createGallery('dogs') : (sortBy === 'mix') ? createGallery('mix') : createGallery('cats');
   renderGallery(gCurrGallery);
 }
 
@@ -40,35 +43,60 @@ function setText() {
   drawImg(gCurrImgidx);
   var c = document.getElementById("my-canvas");
   var ctx = c.getContext("2d");
-  gCtx.font = `20+${gSize}px cursive`;  
+  gCtx.font = `20+${gSize}px cursive`;
   gCtx.lineWidth = 4;
-  gCtx.strokeStyle = gColor;  
+  gCtx.strokeStyle = gColor;
   const elGetText = document.querySelector('input.text');
   const text = elGetText.value;
-
-  (!gUp && !gDowm) ? gTexts.push(text) : (gUp) ? gTexts[0] = text : gTexts[1] = text;
-
+  gTexts.push(text);
   saveToStorage('TEXTS', gTexts);
   textCenter();
   // gCtx.strokeText(text, gX, gY); //Manually select location for text.
   elGetText.value = '';
-  gUp = false;
-  gDowm = false;
+}
+
+function changeText() {
+  console.log(gTexts)
+  gTexts = loadFromStorage('TEXTS');
+  let text = gTexts[0];
+  gTexts[0] = gTexts[1];
+  gTexts[1] = text;
+  textCenter();
+  saveToStorage('TEXTS', gTexts);
+
 }
 
 function up() {
   gTexts = loadFromStorage('TEXTS');
-  gUp = true;
+  gUp += 10;
+  checkPos();
 }
 
 function down() {
   gTexts = loadFromStorage('TEXTS');
-  gDowm = true;
+  gDown += 10;
+  checkPos();
+}
+
+function left() {
+  gTexts = loadFromStorage('TEXTS');
+  gLeft += 10;
+  checkPos();
+}
+
+function right() {
+  gTexts = loadFromStorage('TEXTS');
+  gRight += 10;
+  checkPos();
+}
+
+function checkPos(){
+  (gPos==='center')? textCenter() : (gPos==='left')? textLeft() : textRight();
 }
 
 function textBig() {
   gSize += 5;
-  textCenter();
+  checkPos();
 }
 
 function textSmall() {
@@ -77,6 +105,7 @@ function textSmall() {
 }
 
 function textLeft() {
+  gPos = 'left';
   document.getElementById("body").dir = "ltr";
   resizeCanvas();
   drawImg(gCurrImgidx);
@@ -84,129 +113,87 @@ function textLeft() {
   var ctx = c.getContext("2d");
   gCtx.font = `20+${gSize}px cursive`;
   gCtx.lineWidth = 4;
-  gCtx.strokeStyle = gColor;  
+  gCtx.strokeStyle = gColor;
 
-  gCtx.strokeText(gTexts[0], 50, 50);
-  gCtx.fillText(gTexts[0], 50, 50);
+  gCtx.strokeText(gTexts[0], 50 - gLeft + gRight, 50 - gUp + gDown);
+  gCtx.fillText(gTexts[0], 50 - gLeft + gRight, 50 - gUp + gDown);
   if (gTexts.length > 1) {
-    gCtx.strokeText(gTexts[1], 50, 350);
-    gCtx.fillText(gTexts[1], 50, 350);
+    gCtx.strokeText(gTexts[1], 50 - gLeft + gRight, 350 - gUp + gDown);
+    gCtx.fillText(gTexts[1], 50 - gLeft + gRight, 350 - gUp + gDown);
   }
   if (gTexts.length > 2) {
-    gCtx.strokeText(gTexts[gTexts.length - 1], 50, 200);
-    gCtx.fillText(gTexts[gTexts.length - 1], 50, 200);
+    gCtx.strokeText(gTexts[gTexts.length - 1], 50 - gLeft + gRight, 200 - gUp + gDown);
+    gCtx.fillText(gTexts[gTexts.length - 1], 50 - gLeft + gRight, 200 - gUp + gDown);
   }
 }
 
 function textCenter() {
+  gPos = 'center';
   document.getElementById("body").dir = "ltr";
   resizeCanvas();
   drawImg(gCurrImgidx);
   var c = document.getElementById("my-canvas");
   var ctx = c.getContext("2d");
   gCtx.font = `20+${gSize}px cursive`;
-  gCtx.lineWidth = 4;  
-  gCtx.strokeStyle = gColor; 
+  gCtx.lineWidth = 4;
+  gCtx.strokeStyle = gColor;
 
-  const text1size = gTexts[0].length;
-  var pos1 = checkTextSize(text1size);
-  gCtx.strokeText(gTexts[0], pos1, 50);
-  gCtx.fillText(gTexts[0], pos1, 50);
+  gCtx.strokeText(gTexts[0], 400 - gLeft + gRight, 50 - gUp + gDown);
+  gCtx.fillText(gTexts[0], 400 - gLeft + gRight, 50 - gUp + gDown);
 
   if (gTexts.length > 1) {
-    const text2size = gTexts[1].length;
-    var pos2 = checkTextSize(text2size);
-    gCtx.strokeText(gTexts[1], pos2, 350);
-    gCtx.fillText(gTexts[1], pos2, 350);
+    gCtx.strokeText(gTexts[1], 400 - gLeft + gRight, 350 - gUp + gDown);
+    gCtx.fillText(gTexts[1], 400 - gLeft + gRight, 350 - gUp + gDown);
   }
 
   if (gTexts.length > 2) {
-    const text3size = gTexts[gTexts.length - 1].length;
-    var pos3 = checkTextSize(text3size);
-    gCtx.strokeText(gTexts[gTexts.length - 1], pos3, 200);
-    gCtx.fillText(gTexts[gTexts.length - 1], pos3, 200);
+    gCtx.strokeText(gTexts[gTexts.length - 1], 400 - gLeft + gRight, 200 - gUp + gDown);
+    gCtx.fillText(gTexts[gTexts.length - 1], 400 - gLeft + gRight, 200 - gUp + gDown);
   }
 }
 
 function textRight() {
-  document.getElementById("body").dir = "rtl";
+  gPos = 'right';
   resizeCanvas();
   drawImg(gCurrImgidx);
   var c = document.getElementById("my-canvas");
   var ctx = c.getContext("2d");
   gCtx.font = `20+${gSize}px cursive`;
   gCtx.lineWidth = 4;
-  gCtx.strokeStyle = gColor;  
+  gCtx.strokeStyle = gColor;
 
-  gCtx.strokeText(gTexts[0], 300, 50);
-  gCtx.fillText(gTexts[0], 300, 50);
+  gCtx.strokeText(gTexts[0], 700 - gLeft + gRight, 50 - gUp + gDown);
+  gCtx.fillText(gTexts[0], 700 - gLeft + gRight, 50 - gUp + gDown);
   if (gTexts.length > 1) {
-    gCtx.strokeText(gTexts[1], 300, 350);
-    gCtx.fillText(gTexts[1], 300, 350);
+    gCtx.strokeText(gTexts[1], 700 - gLeft + gRight, 350 - gUp + gDown);
+    gCtx.fillText(gTexts[1], 700 - gLeft + gRight, 350 - gUp + gDown);
   }
   if (gTexts.length > 2) {
-    gCtx.strokeText(gTexts[gTexts.length - 1], 300, 200);
-    gCtx.fillText(gTexts[gTexts.length - 1], 300, 200);
-  } 
+    gCtx.strokeText(gTexts[gTexts.length - 1], 700 - gLeft + gRight, 200 - gUp + gDown);
+    gCtx.fillText(gTexts[gTexts.length - 1], 700 - gLeft + gRight, 200 - gUp + gDown);
+  }
 }
 
-function setEmoji() { //todo
+function setEmoji() {
   gCtx.fillText(EMOJI, gX, gY);
 }
 
 function clearCanvas() {
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+  drawImg(gCurrImgidx);
 }
 
 function downloadCanvas(elLink) {
   const data = gElCanvas.toDataURL();
   console.log('data', data);
   elLink.href = data;
+  var gUp = 0;
+  var gDown = 0;
+  var gLeft = 0;
+  var gRight = 0
 }
 
 function resizeCanvas() {
   var elContainer = document.querySelector('.canvas-container');
   gElCanvas.width = elContainer.offsetWidth - 40;
-}
-
-function checkTextSize(textsize) {
-  if (x.matches) {
-    var pos;
-    if (textsize > 20) alert('Too long!')
-    else if (textsize > 18 && textsize <= 20)
-      pos = 70;
-    else if (textsize > 15 && textsize <= 18)
-      pos = 80;
-    else if (textsize > 12 && textsize <= 15)
-      pos = 90;
-    else if (textsize > 9 && textsize <= 12)
-      pos = 100;
-    else if (textsize > 6 && textsize <= 9)
-      pos = 120;
-    else if (textsize > 3 && textsize <= 6)
-      pos = 140;
-    else
-      pos = 160;
-    return pos;
-  }
-  else {
-    var pos;
-    if (textsize > 20) alert('Too long!')
-    else if (textsize > 18 && textsize <= 20)
-      pos = 270;
-    else if (textsize > 15 && textsize <= 18)
-      pos = 280;
-    else if (textsize > 12 && textsize <= 15)
-      pos = 290;
-    else if (textsize > 9 && textsize <= 12)
-      pos = 300;
-    else if (textsize > 6 && textsize <= 9)
-      pos = 320;
-    else if (textsize > 3 && textsize <= 6)
-      pos = 340;
-    else
-      pos = 360;
-    return pos;
-
-  }
 }

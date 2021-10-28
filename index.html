@@ -25,20 +25,20 @@
     <div class="canvas-btns-container">
         <button onclick="toggleClrInput()" class="set-color-btn">Color</button>
         <input type="color" class="clr-input" hidden onchange="setColor(this.value)">
-        <input class="text" data-trans="text" placeholder="Maximum 20 characters"/>
-        <!-- <textarea class="textarea1" style="border: hidden; font-family: Ariel; font-size: large;" placeholder="Text"></textarea> -->
-        <!-- <textarea class="textarea2" style="border: hidden; font-family: Ariel; font-size: large;" placeholder="Text"></textarea> -->
+        <input class="text" data-trans="text" placeholder="Maximum 20 characters"/>     
         <button onclick="setText()">Add text</button>
         <button onclick="setEmoji()">&#128151</button>
+        <button onclick="changeText()">&#8645</button>
         <button onclick="up()">↑</button>
-        <button onclick="down()">↓</button>             
+        <button onclick="down()">↓</button>
+        <button onclick="left()">←</button>
+        <button onclick="right()">→</button>             
         <button onclick="clearCanvas()"><i style="font-size:12px" class="fa">&#xf1f8;</i></button>
         <button onclick="textBig()">A+</button>
         <button onclick="textSmall()">A-</button>
         <button onclick="textLeft()"><i style="font-size:12px" class="fa">&#xf036;</i></button>
         <button onclick="textCenter()"><i style="font-size:12px" class="fa">&#xf037;</i></button>
         <button onclick="textRight()"><i style="font-size:12px" class="fa">&#xf038;</i></button>
-        
         <button><a href="#" onclick="downloadCanvas(this)" download="myphoto">Download</a></button>
         <br><br>
         <div class="canvas-container">
