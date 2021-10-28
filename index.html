@@ -10,19 +10,19 @@
     <title>mister-canvas</title>
 </head>
 
-<body onload="init()">
+<body id="body" onload="init()">
     <h1>Meme Generator</h1>
     <div class="gallery"></div>
     <div class="canvas-btns-container">
         <button onclick="toggleClrInput()" class="set-color-btn">Color</button>
         <input type="color" class="clr-input" hidden onchange="setColor(this.value)">
-        <!-- <input class="text" data-trans="text" placeholder="Text"/> -->
-        <textarea class="textarea1" style="border: hidden; font-family: Ariel; font-size: large;" placeholder="Text"></textarea>
-        <textarea class="textarea2" style="border: hidden; font-family: Ariel; font-size: large;" placeholder="Text"></textarea>
+        <input class="text" data-trans="text" placeholder="Maximum 20 characters"/>
+        <!-- <textarea class="textarea1" style="border: hidden; font-family: Ariel; font-size: large;" placeholder="Text"></textarea> -->
+        <!-- <textarea class="textarea2" style="border: hidden; font-family: Ariel; font-size: large;" placeholder="Text"></textarea> -->
         <button onclick="setText()">Add text</button>
         <button onclick="up()">↑</button>
         <button onclick="down()">↓</button>
-        <!-- <button onclick="addText()">+</button>         -->
+        <button onclick="addText()">+</button>        
         <button onclick="clearCanvas()"><i style="font-size:12px" class="fa">&#xf1f8;</i></button>
         <button onclick="textBig()">A+</button>
         <button onclick="textSmall()">A-</button>

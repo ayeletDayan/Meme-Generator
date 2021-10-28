@@ -8,6 +8,8 @@ var gSize = 20;
 var gText;
 var gX = 50;
 var gY = 50;
+var gTexts = [];
+
 const EMOJI = '&#128151';
 
 function toggleClrInput() {
@@ -24,18 +26,19 @@ function draw(event) {
   gY = offsetY;
   console.log(gX, gY)
 }
-
 function setText() {
-  
-  const elGetText = document.querySelector('textarea.text');
-  // const elGetText = document.querySelector('input.text');
-  const text = elGetText.value;
+  document.getElementById("body").dir = "ltr";
+  resizeCanvas();
+  drawImg(gCurrImgidx);
   var c = document.getElementById("my-canvas");
   var ctx = c.getContext("2d");
   gCtx.font = `20+${gSize}px cursive`;
-  gCtx.fillStyle = gColor;
-  gCtx.fillText(text, gX, gY);
-  gCtx.strokeText(text, gX, gY);
+  gCtx.strokeStyle = gColor;
+  const elGetText = document.querySelector('input.text');
+  const text = elGetText.value;
+  gTexts.push(text)
+  textCenter()
+  // gCtx.strokeText(text, gX, gY); //Manually select location for text.
   elGetText.value = '';
 }
 
@@ -47,8 +50,8 @@ function down() { //todo
 
 }
 
-function addText() { //todo
-
+function addText() {
+  setText();
 }
 
 function textBig() {
@@ -59,16 +62,58 @@ function textSmall() {
   if (gSize > 5) gSize -= 5;
 }
 
-function textLeft() { //todo
+function textLeft() {
+  document.getElementById("body").dir = "ltr";
+  resizeCanvas();
+  drawImg(gCurrImgidx);
+  var c = document.getElementById("my-canvas");
+  var ctx = c.getContext("2d");
+  gCtx.font = `20+${gSize}px cursive`;
+  gCtx.strokeStyle = gColor;
 
+  gCtx.strokeText(gTexts[0], 50, 50);
+  if (gTexts.length > 1) gCtx.strokeText(gTexts[1], 50, 350);
+  if (gTexts.length > 2) gCtx.strokeText(gTexts[gTexts.length - 1], 50, 200);
 }
 
-function textCenter() { //todo
+function textCenter() {
+  document.getElementById("body").dir = "ltr";
+  resizeCanvas();
+  drawImg(gCurrImgidx);
+  var c = document.getElementById("my-canvas");
+  var ctx = c.getContext("2d");
+  gCtx.font = `20+${gSize}px cursive`;
+  gCtx.strokeStyle = gColor;
 
+  const text1size = gTexts[0].length;
+  var pos1 = checkTextSize(text1size);  
+  gCtx.strokeText(gTexts[0], pos1, 50);
+
+  if (gTexts.length > 1) {
+    const text2size = gTexts[1].length;
+    var pos2 = checkTextSize(text2size);
+    gCtx.strokeText(gTexts[1], pos2, 350);
+  }
+
+  if (gTexts.length > 2) {
+    const text3size = gTexts[gTexts.length - 1].length;
+    var pos3 = checkTextSize(text3size);
+    gCtx.strokeText(gTexts[gTexts.length - 1], pos3, 200);
+  }
 }
 
-function textRight() { //todo
+function textRight() {
+  document.getElementById("body").dir = "rtl";
+  resizeCanvas();
+  drawImg(gCurrImgidx);
+  var c = document.getElementById("my-canvas");
+  var ctx = c.getContext("2d");
+  gCtx.font = `20+${gSize}px cursive`;
+  gCtx.strokeStyle = gColor;
 
+  gCtx.strokeText(gTexts[0], 300, 50);
+  if (gTexts.length > 1) gCtx.strokeText(gTexts[1], 300, 350);
+  if (gTexts.length > 2) gCtx.strokeText(gTexts[gTexts.length - 1], 300, 200);
 }
 
 function setEmoji() { //todo
@@ -88,4 +133,24 @@ function downloadCanvas(elLink) {
 function resizeCanvas() {
   var elContainer = document.querySelector('.canvas-container');
   gElCanvas.width = elContainer.offsetWidth - 40;
+}
+
+function checkTextSize(textsize) {
+  var pos;
+  if (textsize > 20) alert('Too long!')
+  else if (textsize > 18 && textsize <= 20)
+    pos = 70;
+  else if (textsize > 15 && textsize <= 18)
+    pos = 80;
+  else if (textsize > 12 && textsize <= 15)
+    pos = 90;
+  else if (textsize > 9 && textsize <= 12)
+    pos = 100;
+  else if (textsize > 6 && textsize <= 9)
+    pos = 120;
+  else if (textsize > 3 && textsize <= 6)
+    pos = 140;
+  else
+    pos = 160;
+  return pos;
 }

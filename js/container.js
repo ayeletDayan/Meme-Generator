@@ -1,12 +1,13 @@
 'use strict'
 var gGallery;
+var gCurrImgidx;
 
 function init() {
     gGallery = createGallery(18);
     renderGallery(18);
     gElCanvas = document.getElementById('my-canvas');
     gCtx = gElCanvas.getContext('2d');
-    resizeCanvas();
+    resizeCanvas();    
   }
 
 function createGallery(size) {
@@ -35,6 +36,7 @@ function setImg(imgIdx) {
 }
 
 function drawImg(idx) {
+    gCurrImgidx = idx;
     var myImg = document.querySelector('.my-canvas');
     myImg.innerHTML += `<img src="${gGallery[idx]}" alt="" class="my-img"></img>`;
     var elImg = document.querySelector('.my-img');
