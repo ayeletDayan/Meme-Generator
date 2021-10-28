@@ -12,6 +12,15 @@
 
 <body id="body" onload="init()">
     <h1>Meme Generator</h1>
+    <section class="sort">
+        <select onchange="onSetSorted(this.value)">
+            <option data-trans="sort">Sort by</option>
+            <option value="mix" data-trans="mix">Mix</option>
+            <option value="cats" data-trans="cats">Cats</option>
+            <option value="dogs" data-trans="dogs">Dogs</option>
+        </select>        
+    </section>
+    <br>
     <div class="gallery"></div>
     <div class="canvas-btns-container">
         <button onclick="toggleClrInput()" class="set-color-btn">Color</button>
@@ -40,9 +49,10 @@
         </div>
     </div>
     <footer>© Ayelet</footer>
+    <script src="js/storage-service.js"></script>
     <script src="js/media.js"></script>
     <script src="js/service.js"></script>
-    <script src="js/container.js"></script>
+    <script src="js/controller.js"></script>
 </body>
 
 </html>

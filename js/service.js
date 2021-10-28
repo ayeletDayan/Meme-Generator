@@ -3,14 +3,20 @@ var gElCanvas;
 var gCtx;
 var gCurrShape = 'triangle';
 var gColor = '#FAEBD7';
-// var gIsDraw = false;
 var gSize = 20;
 var gText;
 var gX = 50;
 var gY = 50;
 var gTexts = [];
+var gUp = false;
+var gDowm = false;
 
-const EMOJI = '&#128151';
+const EMOJI = '💖';  //'&#128151'
+
+function setSort(sortBy) {
+  gCurrGallery = (sortBy === 'dogs')? createGallery('dogs') : (sortBy === 'mix')? createGallery('mix') : createGallery('cats');    
+  renderGallery(gCurrGallery);
+}
 
 function toggleClrInput() {
   document.querySelector('.clr-input').hidden = !document.querySelector('.clr-input').hidden
@@ -27,6 +33,7 @@ function draw(event) {
   gY = offsetY;
   console.log(gX, gY)
 }
+
 function setText() {
   document.getElementById("body").dir = "ltr";
   resizeCanvas();
@@ -37,18 +44,25 @@ function setText() {
   gCtx.strokeStyle = gColor;
   const elGetText = document.querySelector('input.text');
   const text = elGetText.value;
-  gTexts.push(text)
-  textCenter()
+
+  (!gUp && !gDowm) ? gTexts.push(text) : (gUp) ? gTexts[0] = text : gTexts[1] = text;
+
+  saveToStorage('TEXTS', gTexts);
+  textCenter();
   // gCtx.strokeText(text, gX, gY); //Manually select location for text.
   elGetText.value = '';
+  gUp = false;
+  gDowm = false;
 }
 
-function up() { //todo
-
+function up() {
+  gTexts = loadFromStorage('TEXTS');
+  gUp = true;
 }
 
-function down() { //todo
-
+function down() {
+  gTexts = loadFromStorage('TEXTS');
+  gDowm = true;
 }
 
 function textBig() {
@@ -85,7 +99,7 @@ function textCenter() {
   gCtx.strokeStyle = gColor;
 
   const text1size = gTexts[0].length;
-  var pos1 = checkTextSize(text1size);  
+  var pos1 = checkTextSize(text1size);
   gCtx.strokeText(gTexts[0], pos1, 50);
 
   if (gTexts.length > 1) {
@@ -154,8 +168,7 @@ function checkTextSize(textsize) {
       pos = 160;
     return pos;
   }
-  else
-  {
+  else {
     var pos;
     if (textsize > 20) alert('Too long!')
     else if (textsize > 18 && textsize <= 20)
