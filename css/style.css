@@ -16,6 +16,10 @@ h1 {
 button {
     background-color: antiquewhite;
     font-weight: bold;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    margin: auto;
 }
 
 .gallery {

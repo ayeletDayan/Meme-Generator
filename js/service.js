@@ -14,7 +14,7 @@ var gLeft = 0;
 var gRight = 0;
 var gPos;
 
-const EMOJI = '💖';  //'&#128151'
+const EMOJI = '💖';
 
 function setSort(sortBy) {
   gCurrGallery = (sortBy === 'dogs') ? createGallery('dogs') : (sortBy === 'mix') ? createGallery('mix') : createGallery('cats');
@@ -26,6 +26,8 @@ function toggleClrInput() {
 }
 
 function setColor(color) {
+  var elColor = document.querySelector('.color-btn');
+  elColor.style.display = 'none';
   gColor = color;
   textCenter();
 }
@@ -38,14 +40,8 @@ function draw(event) {
 }
 
 function setText() {
-  document.getElementById("body").dir = "ltr";
   resizeCanvas();
   drawImg(gCurrImgidx);
-  var c = document.getElementById("my-canvas");
-  var ctx = c.getContext("2d");
-  gCtx.font = `20+${gSize}px cursive`;
-  gCtx.lineWidth = 4;
-  gCtx.strokeStyle = gColor;
   const elGetText = document.querySelector('input.text');
   const text = elGetText.value;
   gTexts.push(text);
@@ -106,7 +102,6 @@ function textSmall() {
 
 function textLeft() {
   gPos = 'left';
-  document.getElementById("body").dir = "ltr";
   resizeCanvas();
   drawImg(gCurrImgidx);
   var c = document.getElementById("my-canvas");
@@ -129,7 +124,6 @@ function textLeft() {
 
 function textCenter() {
   gPos = 'center';
-  document.getElementById("body").dir = "ltr";
   resizeCanvas();
   drawImg(gCurrImgidx);
   var c = document.getElementById("my-canvas");
@@ -138,17 +132,17 @@ function textCenter() {
   gCtx.lineWidth = 4;
   gCtx.strokeStyle = gColor;
 
-  gCtx.strokeText(gTexts[0], 400 - gLeft + gRight, 50 - gUp + gDown);
-  gCtx.fillText(gTexts[0], 400 - gLeft + gRight, 50 - gUp + gDown);
+  gCtx.strokeText(gTexts[0], 100 - gLeft + gRight, 50 - gUp + gDown);
+  gCtx.fillText(gTexts[0], 100 - gLeft + gRight, 50 - gUp + gDown);
 
   if (gTexts.length > 1) {
-    gCtx.strokeText(gTexts[1], 400 - gLeft + gRight, 350 - gUp + gDown);
-    gCtx.fillText(gTexts[1], 400 - gLeft + gRight, 350 - gUp + gDown);
+    gCtx.strokeText(gTexts[1], 100 - gLeft + gRight, 350 - gUp + gDown);
+    gCtx.fillText(gTexts[1], 100 - gLeft + gRight, 350 - gUp + gDown);
   }
 
   if (gTexts.length > 2) {
-    gCtx.strokeText(gTexts[gTexts.length - 1], 400 - gLeft + gRight, 200 - gUp + gDown);
-    gCtx.fillText(gTexts[gTexts.length - 1], 400 - gLeft + gRight, 200 - gUp + gDown);
+    gCtx.strokeText(gTexts[gTexts.length - 1], 100 - gLeft + gRight, 200 - gUp + gDown);
+    gCtx.fillText(gTexts[gTexts.length - 1], 100 - gLeft + gRight, 200 - gUp + gDown);
   }
 }
 
@@ -162,15 +156,15 @@ function textRight() {
   gCtx.lineWidth = 4;
   gCtx.strokeStyle = gColor;
 
-  gCtx.strokeText(gTexts[0], 700 - gLeft + gRight, 50 - gUp + gDown);
-  gCtx.fillText(gTexts[0], 700 - gLeft + gRight, 50 - gUp + gDown);
+  gCtx.strokeText(gTexts[0], 300 - gLeft + gRight, 50 - gUp + gDown);
+  gCtx.fillText(gTexts[0], 300 - gLeft + gRight, 50 - gUp + gDown);
   if (gTexts.length > 1) {
-    gCtx.strokeText(gTexts[1], 700 - gLeft + gRight, 350 - gUp + gDown);
-    gCtx.fillText(gTexts[1], 700 - gLeft + gRight, 350 - gUp + gDown);
+    gCtx.strokeText(gTexts[1], 300 - gLeft + gRight, 350 - gUp + gDown);
+    gCtx.fillText(gTexts[1], 300 - gLeft + gRight, 350 - gUp + gDown);
   }
   if (gTexts.length > 2) {
-    gCtx.strokeText(gTexts[gTexts.length - 1], 700 - gLeft + gRight, 200 - gUp + gDown);
-    gCtx.fillText(gTexts[gTexts.length - 1], 700 - gLeft + gRight, 200 - gUp + gDown);
+    gCtx.strokeText(gTexts[gTexts.length - 1], 300 - gLeft + gRight, 200 - gUp + gDown);
+    gCtx.fillText(gTexts[gTexts.length - 1], 300 - gLeft + gRight, 200 - gUp + gDown);
   }
 }
 

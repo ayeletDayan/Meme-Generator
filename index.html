@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>mister-canvas</title>
 </head>
 
 <body id="body" onload="init()">
@@ -23,10 +22,11 @@
     <br>
     <div class="gallery"></div>
     <div class="canvas-btns-container">
-        <button onclick="toggleClrInput()" class="set-color-btn">Color</button>
+        <button onclick="toggleClrInput()" class="color-btn" style="width: 50px;">color</button>
         <input type="color" class="clr-input" hidden onchange="setColor(this.value)">
-        <input class="text" data-trans="text" placeholder="Maximum 20 characters"/>     
-        <button onclick="setText()">Add text</button>
+        <input class="text" data-trans="text" style="height: 30px;" placeholder="Maximum 20 characters"/> 
+        <!-- <input class="text" data-trans="text" onkeyup="setText()" placeholder="Maximum 20 characters"/>      -->
+        <button onclick="setText()" style="width: 70px;">Add text</button>
         <button onclick="setEmoji()">&#128151</button>
         <button onclick="changeText()">&#8645</button>
         <button onclick="up()">↑</button>
@@ -39,7 +39,7 @@
         <button onclick="textLeft()"><i style="font-size:12px" class="fa">&#xf036;</i></button>
         <button onclick="textCenter()"><i style="font-size:12px" class="fa">&#xf037;</i></button>
         <button onclick="textRight()"><i style="font-size:12px" class="fa">&#xf038;</i></button>
-        <button><a href="#" onclick="downloadCanvas(this)" download="myphoto">Download</a></button>
+        <button style="width: 80px;"><a href="#" onclick="downloadCanvas(this)" download="myphoto">Download</a></button>
         <br><br>
         <div class="canvas-container">
             <canvas id="my-canvas" height="400" width="400" class="my-canvas"
