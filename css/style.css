@@ -41,7 +41,13 @@ img {
     border-radius: 50px;
     position: absolute;
     grid-area: 1/1/1/1;
+}
 
+canvas {
+    background-color: antiquewhite;
+    margin: auto;
+    width: 300px;
+    height: 300px;
 }
 
 .canvas-btns-container {

@@ -10,7 +10,8 @@
       document.body.style.backgroundColor = "rgb(64, 88, 88)";
     } else {
      document.body.style.backgroundColor = "rgb(112, 82, 119)";
-     document.canvas.style.width = "400px";
-     document.canvas.style.height = "400px";
+     gSize = 40;
+     gXmedia = 20;
+     gYmedia = 10;
     }
   }

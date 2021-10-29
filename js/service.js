@@ -3,7 +3,7 @@ var gElCanvas;
 var gCtx;
 var gCurrShape = 'triangle';
 var gColor = 'white';
-var gSize = 40;
+var gSize = 20;
 var gText;
 var gX = 50;
 var gY = 50;
@@ -13,6 +13,8 @@ var gDown = 0;
 var gLeft = 0;
 var gRight = 0;
 var gPos;
+var gXmedia = 0;
+var gYmedia = 0;
 
 const EMOJI = '💖';
 
@@ -85,8 +87,8 @@ function right() {
   checkPos();
 }
 
-function checkPos(){
-  (gPos==='center')? textCenter() : (gPos==='left')? textLeft() : textRight();
+function checkPos() {
+  (gPos === 'center') ? textCenter() : (gPos === 'left') ? textLeft() : textRight();
 }
 
 function textBig() {
@@ -109,15 +111,15 @@ function textLeft() {
   gCtx.lineWidth = 4;
   gCtx.strokeStyle = gColor;
 
-  gCtx.strokeText(gTexts[0], 50 - gLeft + gRight, 50 - gUp + gDown);
-  gCtx.fillText(gTexts[0], 50 - gLeft + gRight, 50 - gUp + gDown);
+  gCtx.strokeText(gTexts[0], 10 - gLeft + gRight + gXmedia, 50 - gUp + gDown);
+  gCtx.fillText(gTexts[0], 10 - gLeft + gRight + gXmedia, 50 - gUp + gDown);
   if (gTexts.length > 1) {
-    gCtx.strokeText(gTexts[1], 50 - gLeft + gRight, 350 - gUp + gDown);
-    gCtx.fillText(gTexts[1], 50 - gLeft + gRight, 350 - gUp + gDown);
+    gCtx.strokeText(gTexts[1], 10 - gLeft + gRight + gXmedia, 280 - gUp + gDown + gYmedia);
+    gCtx.fillText(gTexts[1], 10 - gLeft + gRight + gXmedia, 280 - gUp + gDown + gYmedia);
   }
   if (gTexts.length > 2) {
-    gCtx.strokeText(gTexts[gTexts.length - 1], 50 - gLeft + gRight, 200 - gUp + gDown);
-    gCtx.fillText(gTexts[gTexts.length - 1], 50 - gLeft + gRight, 200 - gUp + gDown);
+    gCtx.strokeText(gTexts[gTexts.length - 1], 10 - gLeft + gRight + gXmedia, 150 - gUp + gDown + gYmedia);
+    gCtx.fillText(gTexts[gTexts.length - 1], 10 - gLeft + gRight + gXmedia, 150 - gUp + gDown + gYmedia);
   }
 }
 
@@ -131,21 +133,21 @@ function textCenter() {
   gCtx.lineWidth = 4;
   gCtx.strokeStyle = gColor;
 
-  gCtx.strokeText(gTexts[0], 150 - gLeft + gRight, 50 - gUp + gDown);
-  gCtx.fillText(gTexts[0], 150 - gLeft + gRight, 50 - gUp + gDown);
+  gCtx.strokeText(gTexts[0], 100 - gLeft + gRight + gXmedia * 15, 50 - gUp + gDown);
+  gCtx.fillText(gTexts[0], 100 - gLeft + gRight + gXmedia * 15, 50 - gUp + gDown);
 
   if (gTexts.length > 1) {
-    gCtx.strokeText(gTexts[1], 150 - gLeft + gRight, 350 - gUp + gDown);
-    gCtx.fillText(gTexts[1], 150 - gLeft + gRight, 350 - gUp + gDown);
+    gCtx.strokeText(gTexts[1], 100 - gLeft + gRight + gXmedia * 15, 280 - gUp + gDown + gYmedia);
+    gCtx.fillText(gTexts[1], 100 - gLeft + gRight + gXmedia * 15, 280 - gUp + gDown + gYmedia);
   }
 
   if (gTexts.length > 2) {
-    gCtx.strokeText(gTexts[gTexts.length - 1], 150 - gLeft + gRight, 200 - gUp + gDown);
-    gCtx.fillText(gTexts[gTexts.length - 1], 150 - gLeft + gRight, 200 - gUp + gDown);
+    gCtx.strokeText(gTexts[gTexts.length - 1], 100 - gLeft + gRight + gXmedia * 15, 150 - gUp + gDown + gYmedia);
+    gCtx.fillText(gTexts[gTexts.length - 1], 100 - gLeft + gRight + gXmedia * 15, 150 - gUp + gDown + gYmedia);
   }
 }
 
-function textRight() {  
+function textRight() {
   gPos = 'right';
   resizeCanvas();
   drawImg(gCurrImgidx);
@@ -155,29 +157,30 @@ function textRight() {
   gCtx.lineWidth = 4;
   gCtx.strokeStyle = gColor;
 
-  if (x.matches){
-    gCtx.strokeText(gTexts[0], 300 - gLeft + gRight, 50 - gUp + gDown);
-    gCtx.fillText(gTexts[0], 300 - gLeft + gRight, 50 - gUp + gDown);
+  if (x.matches) {
+    gCtx.strokeText(gTexts[0], 200 - gLeft + gRight , 50 - gUp + gDown);
+    gCtx.fillText(gTexts[0], 200 - gLeft + gRight, 50 - gUp + gDown);
     if (gTexts.length > 1) {
-      gCtx.strokeText(gTexts[1], 300 - gLeft + gRight, 350 - gUp + gDown);
-      gCtx.fillText(gTexts[1], 300 - gLeft + gRight, 350 - gUp + gDown);
+      gCtx.strokeText(gTexts[1], 200 - gLeft + gRight, 280 - gUp + gDown);
+      gCtx.fillText(gTexts[1], 200 - gLeft + gRight, 280 - gUp + gDown);
     }
     if (gTexts.length > 2) {
-      gCtx.strokeText(gTexts[gTexts.length - 1], 300 - gLeft + gRight, 200 - gUp + gDown);
-      gCtx.fillText(gTexts[gTexts.length - 1], 300 - gLeft + gRight, 200 - gUp + gDown);
+      gCtx.strokeText(gTexts[gTexts.length - 1], 200 - gLeft + gRight, 150 - gUp + gDown);
+      gCtx.fillText(gTexts[gTexts.length - 1], 200 - gLeft + gRight, 150 - gUp + gDown);
     }
   }
 
-  else{
-    gCtx.strokeText(gTexts[0], 300 - gLeft + gRight, 50 - gUp + gDown);
-    gCtx.fillText(gTexts[0], 300 - gLeft + gRight, 50 - gUp + gDown);
+  else {
+    gCtx.strokeText(gTexts[0], 280 - gLeft + gRight, 50 - gUp + gDown);
+    gCtx.fillText(gTexts[0], 280 - gLeft + gRight, 50 - gUp + gDown);
+
     if (gTexts.length > 1) {
-      gCtx.strokeText(gTexts[1], 300 - gLeft + gRight, 350 - gUp + gDown);
-      gCtx.fillText(gTexts[1], 300 - gLeft + gRight, 350 - gUp + gDown);
+      gCtx.strokeText(gTexts[1], 280 - gLeft + gRight, 280 - gUp + gDown + gYmedia);
+      gCtx.fillText(gTexts[1], 280 - gLeft + gRight, 280 - gUp + gDown + gYmedia);
     }
     if (gTexts.length > 2) {
-      gCtx.strokeText(gTexts[gTexts.length - 1], 300 - gLeft + gRight, 200 - gUp + gDown);
-      gCtx.fillText(gTexts[gTexts.length - 1], 300 - gLeft + gRight, 200 - gUp + gDown);
+      gCtx.strokeText(gTexts[gTexts.length - 1], 280 - gLeft + gRight, 150 - gUp + gDown + gYmedia);
+      gCtx.fillText(gTexts[gTexts.length - 1], 280 - gLeft + gRight, 150 - gUp + gDown + gYmedia);
     }
   }
 }

@@ -8,8 +8,8 @@ function init() {
     renderGallery(gCurrGallery);
     gElCanvas = document.getElementById('my-canvas');
     gCtx = gElCanvas.getContext('2d');
-    resizeCanvas();    
-  }
+    resizeCanvas();
+}
 
 function onSetSorted(sortBy) {
     setSort(sortBy);
@@ -19,7 +19,7 @@ function createGallery(currGallery) {
     console.log(currGallery)
     var gallery = [];
     for (let i = 1; i <= gGallerySize; i++) {
-        gallery.push('img/'+currGallery+'/' + i + '.jpg');
+        gallery.push('img/' + currGallery + '/' + i + '.jpg');
     }
     return gallery;
 }
@@ -40,7 +40,7 @@ function setImg(imgIdx) {
     elGallery.style.display = 'none';
     var elCanvas = document.querySelector('.canvas-btns-container');
     elCanvas.style.display = 'block';
-    drawImg(imgIdx);    
+    drawImg(imgIdx);
 }
 
 function drawImg(idx) {
@@ -52,7 +52,6 @@ function drawImg(idx) {
 }
 
 function onText() {
-    document.getElementById("body").dir = "ltr";
     resizeCanvas();
     drawImg(gCurrImgidx);
     var c = document.getElementById("my-canvas");
@@ -63,18 +62,17 @@ function onText() {
     const elGetText = document.querySelector('input.text');
     const text = elGetText.value;
     if (gTexts.length === 0) {
-        gCtx.strokeText(text, 150 - gLeft + gRight, 50 - gUp + gDown);
-        gCtx.fillText(text, 150 - gLeft + gRight, 50 - gUp + gDown);
+        gCtx.strokeText(text, 100 - gLeft + gRight + gXmedia * 15, 50 - gUp + gDown);
+        gCtx.fillText(text, 100 - gLeft + gRight + gXmedia * 15, 50 - gUp + gDown);
     }
 
     else if (gTexts.length === 1) {
-        console.log(text);
-        gCtx.strokeText(text, 150 - gLeft + gRight, 350 - gUp + gDown);
-        gCtx.fillText(text, 150 - gLeft + gRight, 350 - gUp + gDown);
+        gCtx.strokeText(text, 100 - gLeft + gRight + gXmedia * 15, 280 - gUp + gDown + gYmedia);
+        gCtx.fillText(text, 100 - gLeft + gRight + gXmedia * 15, 280 - gUp + gDown + gYmedia);
     }
 
     else if (gTexts.length > 1) {
-        gCtx.strokeText(text, 150 - gLeft + gRight, 200 - gUp + gDown);
-        gCtx.fillText(text, 150 - gLeft + gRight, 200 - gUp + gDown);
+        gCtx.strokeText(text, 100 - gLeft + gRight + gXmedia * 15, 150 - gUp + gDown + gYmedia);
+        gCtx.fillText(text, 100 - gLeft + gRight + gXmedia * 15, 150 - gUp + gDown + gYmedia);
     }
 }
