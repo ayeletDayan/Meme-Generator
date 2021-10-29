@@ -62,21 +62,19 @@ function onText() {
     gCtx.strokeStyle = gColor;
     const elGetText = document.querySelector('input.text');
     const text = elGetText.value;
-
-    console.log(gTexts);
-
     if (gTexts.length === 0) {
         gCtx.strokeText(text, 150 - gLeft + gRight, 50 - gUp + gDown);
         gCtx.fillText(text, 150 - gLeft + gRight, 50 - gUp + gDown);
     }
 
     else if (gTexts.length === 1) {
-        gCtx.strokeText(gTexts[1], 150 - gLeft + gRight, 350 - gUp + gDown);
-        gCtx.fillText(gTexts[1], 150 - gLeft + gRight, 350 - gUp + gDown);
+        console.log(text);
+        gCtx.strokeText(text, 150 - gLeft + gRight, 350 - gUp + gDown);
+        gCtx.fillText(text, 150 - gLeft + gRight, 350 - gUp + gDown);
     }
 
     else if (gTexts.length > 1) {
-        gCtx.strokeText(gTexts[gTexts.length - 1], 150 - gLeft + gRight, 200 - gUp + gDown);
-        gCtx.fillText(gTexts[gTexts.length - 1], 150 - gLeft + gRight, 200 - gUp + gDown);
+        gCtx.strokeText(text, 150 - gLeft + gRight, 200 - gUp + gDown);
+        gCtx.fillText(text, 150 - gLeft + gRight, 200 - gUp + gDown);
     }
 }

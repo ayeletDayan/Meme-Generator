@@ -47,7 +47,6 @@ function setText() {
   gTexts.push(text);
   saveToStorage('TEXTS', gTexts);
   textCenter();
-  // gCtx.strokeText(text, gX, gY); //Manually select location for text.
   elGetText.value = '';
 }
 
@@ -146,7 +145,7 @@ function textCenter() {
   }
 }
 
-function textRight() {
+function textRight() {  
   gPos = 'right';
   resizeCanvas();
   drawImg(gCurrImgidx);
@@ -156,15 +155,30 @@ function textRight() {
   gCtx.lineWidth = 4;
   gCtx.strokeStyle = gColor;
 
-  gCtx.strokeText(gTexts[0], 300 - gLeft + gRight, 50 - gUp + gDown);
-  gCtx.fillText(gTexts[0], 300 - gLeft + gRight, 50 - gUp + gDown);
-  if (gTexts.length > 1) {
-    gCtx.strokeText(gTexts[1], 300 - gLeft + gRight, 350 - gUp + gDown);
-    gCtx.fillText(gTexts[1], 300 - gLeft + gRight, 350 - gUp + gDown);
+  if (x.matches){
+    gCtx.strokeText(gTexts[0], 300 - gLeft + gRight, 50 - gUp + gDown);
+    gCtx.fillText(gTexts[0], 300 - gLeft + gRight, 50 - gUp + gDown);
+    if (gTexts.length > 1) {
+      gCtx.strokeText(gTexts[1], 300 - gLeft + gRight, 350 - gUp + gDown);
+      gCtx.fillText(gTexts[1], 300 - gLeft + gRight, 350 - gUp + gDown);
+    }
+    if (gTexts.length > 2) {
+      gCtx.strokeText(gTexts[gTexts.length - 1], 300 - gLeft + gRight, 200 - gUp + gDown);
+      gCtx.fillText(gTexts[gTexts.length - 1], 300 - gLeft + gRight, 200 - gUp + gDown);
+    }
   }
-  if (gTexts.length > 2) {
-    gCtx.strokeText(gTexts[gTexts.length - 1], 300 - gLeft + gRight, 200 - gUp + gDown);
-    gCtx.fillText(gTexts[gTexts.length - 1], 300 - gLeft + gRight, 200 - gUp + gDown);
+
+  else{
+    gCtx.strokeText(gTexts[0], 300 - gLeft + gRight, 50 - gUp + gDown);
+    gCtx.fillText(gTexts[0], 300 - gLeft + gRight, 50 - gUp + gDown);
+    if (gTexts.length > 1) {
+      gCtx.strokeText(gTexts[1], 300 - gLeft + gRight, 350 - gUp + gDown);
+      gCtx.fillText(gTexts[1], 300 - gLeft + gRight, 350 - gUp + gDown);
+    }
+    if (gTexts.length > 2) {
+      gCtx.strokeText(gTexts[gTexts.length - 1], 300 - gLeft + gRight, 200 - gUp + gDown);
+      gCtx.fillText(gTexts[gTexts.length - 1], 300 - gLeft + gRight, 200 - gUp + gDown);
+    }
   }
 }
 

@@ -24,7 +24,7 @@
     <div class="canvas-btns-container">
         <button onclick="toggleClrInput()" class="color-btn" style="width: 50px;">color</button>
         <input type="color" class="clr-input" hidden onchange="setColor(this.value)">
-        <input class="text" data-trans="text" onkeyup="onText()" placeholder="Maximum 20 characters"/>     
+        <input class="text" data-trans="text" onkeyup="onText()" placeholder="Text"/>     
         <button onclick="setText()" style="width: 70px;">Add text</button>
         <button onclick="setEmoji()">&#128151</button>
         <button onclick="changeText()">&#8645</button>
@@ -41,11 +41,8 @@
         <button style="width: 80px;"><a href="#" onclick="downloadCanvas(this)" download="myphoto">Download</a></button>
         <br><br>
         <div class="canvas-container">
-            <canvas id="my-canvas" height="400" width="400" class="my-canvas"
-            onclick="draw(event)"></canvas>            
-            <!-- onmousedown="mouseDown(event)"
-                onmouseup="mouseUp(event)" onmousemove="draw(event)" ontouchstart="mouseDown(event)"
-                ontouchend="mouseUp(event)" ontouchmove="draw(event)"> -->
+            <canvas id="my-canvas" height="300" width="300" class="my-canvas"
+            onclick="draw(event)"></canvas>
         </div>
     </div>
     <footer>© Ayelet</footer>

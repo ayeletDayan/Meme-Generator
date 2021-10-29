@@ -44,16 +44,9 @@ img {
 
 }
 
-canvas {
-    background-color: antiquewhite;
-    margin: auto;
-    width: 350px;
-    height: 350px;
-}
-
 .canvas-btns-container {
     background-color: rgb(211, 62, 149);
-    min-height: 400px;
+    min-height: 300px;
     padding: 10px;
     margin: auto;
     padding-top: 20px;
