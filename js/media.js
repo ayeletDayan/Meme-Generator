@@ -9,6 +9,6 @@
     if (x.matches) { // If media query matches
       document.body.style.backgroundColor = "rgb(64, 88, 88)";
     } else {
-     document.body.style.backgroundColor = "pink";
+     document.body.style.backgroundColor = "rgb(112, 82, 119)";
     }
   }
