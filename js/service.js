@@ -168,16 +168,16 @@ function textRight() {
   }
 
   else {
-    gCtx.strokeText(gTexts[0], 500 - gLeft + gRight, 50 - gUp + gDown);
-    gCtx.fillText(gTexts[0], 500 - gLeft + gRight, 50 - gUp + gDown);
+    gCtx.strokeText(gTexts[0], 590 - gLeft + gRight, 50 - gUp + gDown);
+    gCtx.fillText(gTexts[0], 590 - gLeft + gRight, 50 - gUp + gDown);
 
     if (gTexts.length > 1) {
-      gCtx.strokeText(gTexts[1], 500 - gLeft + gRight, 280 - gUp + gDown + gYmedia);
-      gCtx.fillText(gTexts[1], 500 - gLeft + gRight, 280 - gUp + gDown + gYmedia);
+      gCtx.strokeText(gTexts[1], 590 - gLeft + gRight, 280 - gUp + gDown + gYmedia);
+      gCtx.fillText(gTexts[1], 590 - gLeft + gRight, 280 - gUp + gDown + gYmedia);
     }
     if (gTexts.length > 2) {
-      gCtx.strokeText(gTexts[gTexts.length - 1], 500 - gLeft + gRight, 150 - gUp + gDown + gYmedia);
-      gCtx.fillText(gTexts[gTexts.length - 1], 500 - gLeft + gRight, 150 - gUp + gDown + gYmedia);
+      gCtx.strokeText(gTexts[gTexts.length - 1], 590 - gLeft + gRight, 150 - gUp + gDown + gYmedia);
+      gCtx.fillText(gTexts[gTexts.length - 1], 590 - gLeft + gRight, 150 - gUp + gDown + gYmedia);
     }
   }
 }

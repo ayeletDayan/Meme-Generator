@@ -17,7 +17,7 @@ function myFunction(x) {
   else {
     document.body.style.backgroundColor = "rgb(112, 82, 119)";
     gSize = 40;
-    gXmedia = 10;
+    gXmedia = 20;
     gYmedia = 0;
   }
 }
