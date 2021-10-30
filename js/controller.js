@@ -16,7 +16,6 @@ function onSetSorted(sortBy) {
 }
 
 function createGallery(currGallery) {
-    console.log(currGallery)
     var gallery = [];
     for (let i = 1; i <= gGallerySize; i++) {
         gallery.push('img/' + currGallery + '/' + i + '.jpg');

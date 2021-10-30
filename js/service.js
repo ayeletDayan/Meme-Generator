@@ -3,18 +3,15 @@ var gElCanvas;
 var gCtx;
 var gCurrShape = 'triangle';
 var gColor = 'white';
-var gSize = 20;
 var gText;
-var gX = 50;
-var gY = 50;
+var gX;
+var gY;
 var gTexts = [];
 var gUp = 0;
 var gDown = 0;
 var gLeft = 0;
 var gRight = 0;
 var gPos;
-var gXmedia = 0;
-var gYmedia = 0;
 
 const EMOJI = '💖';
 
@@ -171,16 +168,16 @@ function textRight() {
   }
 
   else {
-    gCtx.strokeText(gTexts[0], 280 - gLeft + gRight, 50 - gUp + gDown);
-    gCtx.fillText(gTexts[0], 280 - gLeft + gRight, 50 - gUp + gDown);
+    gCtx.strokeText(gTexts[0], 500 - gLeft + gRight, 50 - gUp + gDown);
+    gCtx.fillText(gTexts[0], 500 - gLeft + gRight, 50 - gUp + gDown);
 
     if (gTexts.length > 1) {
-      gCtx.strokeText(gTexts[1], 280 - gLeft + gRight, 280 - gUp + gDown + gYmedia);
-      gCtx.fillText(gTexts[1], 280 - gLeft + gRight, 280 - gUp + gDown + gYmedia);
+      gCtx.strokeText(gTexts[1], 500 - gLeft + gRight, 280 - gUp + gDown + gYmedia);
+      gCtx.fillText(gTexts[1], 500 - gLeft + gRight, 280 - gUp + gDown + gYmedia);
     }
     if (gTexts.length > 2) {
-      gCtx.strokeText(gTexts[gTexts.length - 1], 280 - gLeft + gRight, 150 - gUp + gDown + gYmedia);
-      gCtx.fillText(gTexts[gTexts.length - 1], 280 - gLeft + gRight, 150 - gUp + gDown + gYmedia);
+      gCtx.strokeText(gTexts[gTexts.length - 1], 500 - gLeft + gRight, 150 - gUp + gDown + gYmedia);
+      gCtx.fillText(gTexts[gTexts.length - 1], 500 - gLeft + gRight, 150 - gUp + gDown + gYmedia);
     }
   }
 }
@@ -197,7 +194,6 @@ function clearCanvas() {
 
 function downloadCanvas(elLink) {
   const data = gElCanvas.toDataURL();
-  console.log('data', data);
   elLink.href = data;
   var gUp = 0;
   var gDown = 0;
