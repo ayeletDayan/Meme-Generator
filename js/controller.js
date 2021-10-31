@@ -2,6 +2,7 @@
 var gCurrGallery;
 var gCurrImgidx;
 var gGallerySize = 15;
+var gDx = 0;
 
 function init() {
     gCurrGallery = createGallery('cats');
@@ -51,27 +52,30 @@ function drawImg(idx) {
 }
 
 function onText() {
-    resizeCanvas();
+    resizeCanvas();   
+    gX = gElCanvas.width / 2 - gDx * 10;
+    gY = gElCanvas.height;
     drawImg(gCurrImgidx);
     var c = document.getElementById("my-canvas");
     var ctx = c.getContext("2d");
-    gCtx.font = `20+${gSize}px cursive`;
+    gCtx.font = `${gSize}px cursive`;
     gCtx.lineWidth = 4;
     gCtx.strokeStyle = gColor;
     const elGetText = document.querySelector('input.text');
     const text = elGetText.value;
     if (gTexts.length === 0) {
-        gCtx.strokeText(text, 100 - gLeft + gRight + gXmedia * 15, 50 - gUp + gDown);
-        gCtx.fillText(text, 100 - gLeft + gRight + gXmedia * 15, 50 - gUp + gDown);
+        gCtx.strokeText(text, gX, gY * 0.15);
+        gCtx.fillText(text, gX, gY * 0.15);
+        gDx++;
     }
-
     else if (gTexts.length === 1) {
-        gCtx.strokeText(text, 100 - gLeft + gRight + gXmedia * 15, 280 - gUp + gDown + gYmedia);
-        gCtx.fillText(text, 100 - gLeft + gRight + gXmedia * 15, 280 - gUp + gDown + gYmedia);
+        gCtx.strokeText(text, gX, gY * 0.85);
+        gCtx.fillText(text, gX, gY * 0.85);
+        gDx++;
     }
-
     else if (gTexts.length > 1) {
-        gCtx.strokeText(text, 100 - gLeft + gRight + gXmedia * 15, 150 - gUp + gDown + gYmedia);
-        gCtx.fillText(text, 100 - gLeft + gRight + gXmedia * 15, 150 - gUp + gDown + gYmedia);
+        gCtx.strokeText(text, gX, gY * 0.5);
+        gCtx.fillText(text, gX, gY * 0.5);
+        gDx++;
     }
 }

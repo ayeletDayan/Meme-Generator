@@ -17,40 +17,57 @@
             <option value="mix" data-trans="mix">Mix</option>
             <option value="cats" data-trans="cats">Cats</option>
             <option value="dogs" data-trans="dogs">Dogs</option>
-        </select>        
+        </select>
     </section>
     <br>
     <div class="gallery"></div>
     <div class="canvas-btns-container">
-        <button onclick="toggleClrInput()" class="color-btn" style="width: 50px;">color</button>
-        <input type="color" class="clr-input" hidden onchange="setColor(this.value)">
-        <input class="text" data-trans="text" onkeyup="onText()" placeholder="Text"/>     
-        <button onclick="setText()" style="width: 70px;">Add text</button>
-        <button onclick="setEmoji()">&#128151</button>
-        <button onclick="changeText()">&#8645</button>
-        <button onclick="up()">↑</button>
-        <button onclick="down()">↓</button>
-        <button onclick="left()">←</button>
-        <button onclick="right()">→</button>             
-        <button onclick="clearCanvas()"><i style="font-size: 12px;" class="fa">&#xf1f8;</i></button>
-        <button onclick="textBig()">A+</button>
-        <button onclick="textSmall()">A-</button>
-        <button onclick="textLeft()"><i style="font-size: 12px;" class="fa">&#xf036;</i></button>
-        <button onclick="textCenter()"><i style="font-size: 12px;" class="fa">&#xf037;</i></button>
-        <button onclick="textRight()"><i style="font-size: 12px;" class="fa">&#xf038;</i></button>
-        <button style="width: 80px;"><a href="#" onclick="downloadCanvas(this)" download="my-img">Download</a></button>
-        <br><br>
-        <div class="canvas-container">
-            <canvas id="my-canvas" height="300" width="300" class="my-canvas"
-            onclick="draw(event)"></canvas>
+        <div class="text-btns">
+            <button onclick="toggleClrInput()" class="color-btn" style="width: 50px;">color</button>
+            <button onclick="textBig()">A+</button>
+            <button onclick="textSmall()">A-</button>
+            <button onclick="setEmoji()">&#128151</button>
+            <input type="color" class="clr-input" hidden onchange="setColor(this.value)">
+            <input class="text" data-trans="text" onkeyup="onText()" placeholder="Text" />
+            <button onclick="addText()" style="width: 70px;">Add text</button>
         </div>
+        <br>
+        <div class="canvas-container">
+            <canvas id="my-canvas" height="300" width="300" class="my-canvas" onclick="draw(event)"></canvas>
+        </div>        
+        <!-- <button onclick="changeText()">&#8645</button>
+            <button onclick="up()">↑</button>
+            <button onclick="down()">↓</button>
+            <button onclick="left()">←</button>
+            <button onclick="right()">→</button>
+            <button onclick="textLeft()"><i style="font-size: 12px;" class="fa">&#xf036;</i></button>
+            <button onclick="textCenter()"><i style="font-size: 12px;" class="fa">&#xf037;</i></button>
+            <button onclick="textRight()"><i style="font-size: 12px;" class="fa">&#xf038;</i></button> -->
+        <div class="move-btns">
+            <div>
+                <h5>Move text</h5>
+                <button onclick="Move(0)" style="width: 50px;">1st</button>
+                <button onclick="Move(1)" style="width: 50px;">2nd</button>
+                <button onclick="Move(2)" style="width: 50px;">3rd</button>
+            </div>
+            <div>
+                <br>
+                <button onclick="clearCanvas()"><i style="font-size: 12px;" class="fa">&#xf1f8;</i></button>
+                <button style="width: 80px;"><a href="#" onclick="downloadCanvas(this)" download="my-img">Download</a></button>
+            </div>            
+        </div>
+
+
+        <br>
+
     </div>
     <footer>© Ayelet</footer>
     <script src="js/media.js"></script>
-    <script src="js/storage-service.js"></script>    
+    <script src="js/storage-service.js"></script>
+    <script src="js/text-service.js"></script>
     <script src="js/service.js"></script>
     <script src="js/controller.js"></script>
-    
+
 </body>
 
 </html>

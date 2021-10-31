@@ -19,7 +19,7 @@ button {
     height: 30px;
     width: 30px;
     text-align: center;
-    margin: auto;
+    /* margin: auto; */
 }
 
 .gallery {
@@ -41,20 +41,47 @@ img {
     border-radius: 50px;
 }
 
-canvas {
-    background-color: antiquewhite;
-    margin: auto;
-    width: 600px;
-    height: 600px;
-}
-
 .canvas-btns-container {
     background-color: rgb(211, 62, 149);
     min-height: 300px;
     padding: 10px;
-    margin: auto;
+    /* margin: auto; */
     padding-top: 20px;
     display: none;
+    /* flex-direction: column; */
+}
+
+.canvas-container{
+    margin: auto;
+    width: fit-content;
+}
+
+
+canvas {
+    background-color: antiquewhite;
+    /* margin: auto; */
+    width: 300px;
+    height: 300px;
+}
+
+h5{
+    color: antiquewhite;
+    font-family: cursive;
+    margin: 0;
+}
+
+.btns{
+display: flex;
+flex-direction: row;
+}
+
+.text-btns{
+
+}
+
+.move-btns{
+    margin: 7px;
+
 }
 
 footer {
